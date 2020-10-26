@@ -1,0 +1,25 @@
+<h1>Articles Index Page</h1>
+
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>Title</strong></th>
+      <th><strong>Description</strong></th>
+      <th><strong>Actions</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @articles.each do |articleData| %>
+      <tr>
+        <td><%=articleData.title%></td>
+        <td><%=articleData.description%></td>
+        <td>
+          <td><a href="">show</a></td>
+          <td><a href="">update</a></td>
+          <td><a href="">delete</a></td>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

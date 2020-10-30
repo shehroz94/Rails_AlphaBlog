@@ -1,17 +1,9 @@
 
 
-<% if @article.errors.any? %>
-<h2>Following errors prevented the article from being saved:- </h2>
-<ul>
-  <%= @article.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-  <% end %>
-</ul>
-<% end %>
-
 <div id="page-content">
   <div class="container" id="index-container">
     <h1 class="text-center mt-4"><strong>Adding A New Article</strong></h1>
+      <%= render 'shared/error' %>
     <div class="shadow p-3 mb-5 bg-info rounded text-center">
       <%= render 'form' %>
     </div>

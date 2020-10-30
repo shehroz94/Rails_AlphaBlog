@@ -1,0 +1,22 @@
+
+
+
+<%= form_with scope: :articles, url: articles_path, local: true do |f| %>
+  
+  <div class="form-group row">
+    <%= f.label :Title, class: "col-2 col-form-label" %>
+    <div class="col-10">
+      <%= f.text_field :title, class: "form-control", placeholder: "enter title" %>
+    </div>
+
+    <%= f.label :Description, class: "col-2 col-form-label mt-2 "%>
+    <div class="col-10">
+      <%= f.text_area :description, rows: 10, class: "form-control mt-2", placeholder: "add description" %>
+    </div>
+  </div>
+
+  <div class="form-group row justify-content-center mt-3">
+    <%=f.submit class: "btn btn-outline-light btn-lg"%>
+  </div>
+
+<% end %>

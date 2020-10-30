@@ -3,23 +3,28 @@
   <h1 class="text-center mt-4">Listing all articles</h1>
 
   <% @articles.each do |articleData| %>
-    <div class="card text-center">
+    <div>
+      <div class="card text-center shadow mb-5 bg-white rounded">
       <div class="card-header">
-        By Muhammad Shehroz
+        <em>by Muhammad Shehroz</em>
       </div>
       <div class="card-body">
-        <h5 class="card-title"><%=articleData.title%></h5>
+        <h5 class="card-title"><strong><%=articleData.title%></strong></h5>
         <p class="card-text"><%=articleData.description%></p>
         <a href="/articles/<%=articleData.id%>" class="btn btn-outline-success" >View</a>
         <a href="/articles/<%=articleData.id%>/edit" class="btn btn-outline-primary">Edit</a>
-        <%= link_to 'Delete', article_path(articleData), method: :delete, data: {confirm: "Are you sure?"} %>
+        <div class="btn btn-outline-danger">
+          <%= link_to 'Delete', article_path(articleData), method: :delete, data: {confirm: "Are you sure?"} %>
+        </div>
       </div>
       <div class="card-footer text-muted">
-        2 days ago
+        <small><p>Created about <%=time_ago_in_words(articleData.created_at)%> ago,  
+                  Edited about <%=time_ago_in_words(articleData.updated_at)%> ago</p></small>
       </div>
-    </div>
-    <div id="spacing">
-    </div>
+      </div>
+      <div id="spacing">
+      </div>
+      </div>
   <% end %>
 
   <p></p>

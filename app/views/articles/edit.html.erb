@@ -1,4 +1,4 @@
-<h1>Article Editing</h1>
+
 
 <% if @article.errors.any? %>
   <h2>Following errors prevented the article from being updated:- </h2>
@@ -9,24 +9,35 @@
   </ul>
 <% end %>
 
-<%= form_with(model: @article, local: true) do |f| %>
-  <%= f.label :Title%>
-  <div>
-    <%= f.text_field :title %>
+<div id="page-content">
+  <div class="container" id="index-container">
+    <h1 class="text-center mt-4"><strong>Article Editing</strong></h1>
+    <div class="shadow p-3 mb-5 bg-info rounded text-center">
+      <%= form_with(model: @article, local: true) do |f| %>
+        <div class="form-group row">
+          <%= f.label :Title, class: "col-2 col-form-label" %>
+          <div class="col-10">
+            <%= f.text_field :title, class: "form-control" %>
+          </div>
+      
+          <p></p>
+          
+          <%= f.label :Description, class: "col-2 col-form-label mt-2"%>
+          <div class="col-10">
+            <%= f.text_area :description, rows: 10, class: "form-control mt-2" %>
+          </div>
+        </div>
+        
+        <div class="form-group row justify-content-center mt-3">
+          <%= f.submit class: "btn btn-outline-light btn-lg" %>
+        </div>
+        
+      <% end %>
+    </div> 
+    
+    <p></p>
+    <div class="text-center">
+      <a href="/articles">[ Cancel and return to articles listing ]</a>
+    </div>
   </div>
-
-  <p></p>
-  
-  <%= f.label :Description%>
-  <div>
-    <%= f.text_area :description %>
-  </div>
-
-  <%= f.submit %>
-
-<% end %> 
-
-<p></p>
-<div>
-  <a href="/articles">Return To Article Listing</a>
 </div>

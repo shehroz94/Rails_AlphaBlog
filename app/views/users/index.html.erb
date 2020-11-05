@@ -1,0 +1,29 @@
+<div id="page-content">
+  <div class="container" id="index-container">
+  <h1 class="text-center mt-4">Alpha Bloggers</h1>
+
+  <% @users.each do |userData| %>
+    <div>
+      <div class="card text-center shadow mb-5 bg-white rounded">
+      <div class="card-header">
+      <strong><%=userData.username%></strong>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"><strong><%=userData.email%></strong></h5>
+
+        <p class="card-text"><%=userData.articles.count%> Article(s)</p>
+
+        <a href="<%=user_path(userData)%>" class="btn btn-outline-success" >View Profile</a>
+        <a href="<%=edit_user_path(userData)%>" class="btn btn-outline-primary">Edit Profile</a>
+      </div>
+      <div class="card-footer text-muted">
+        <small><p>Joined <%=time_ago_in_words(userData.created_at)%> ago</p></small>
+      </div>
+      </div>
+      <div id="spacing">
+      </div>
+      </div>
+  <% end %>
+
+  </div>
+</div>

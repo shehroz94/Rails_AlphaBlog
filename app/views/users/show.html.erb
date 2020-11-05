@@ -1,0 +1,41 @@
+<div id="page-content">
+  <div class="container" id="index-container">
+    <h1 class="text-center mt-4"><%=@user.username%>'s Profile</h1>
+    <div>
+      <h5 class="text-center mt-5"><%=@user.email%></h3>
+    </div>
+  
+    <div><h2 class="text-center mt-3">Articles</h2></div>
+
+    <% @articles.each do |articleData| %>
+      <%if (articleData.user_id == @user.id)%>
+        <div>
+        <div class="card text-center shadow mb-5 bg-white rounded">
+        <div class="card-header">
+        <em>by <%=@user.username%></em>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"><strong><%=articleData.title%></strong></h5>
+          <p class="card-text"><%=articleData.description%></p>
+          <a href="/articles/<%=articleData.id%>" class="btn btn-outline-success" >View</a>
+          <a href="/articles/<%=articleData.id%>/edit" class="btn btn-outline-primary">Edit</a>
+          <div class="btn btn-outline-danger">
+            <%= link_to 'Delete', article_path(articleData), method: :delete, data: {confirm: "Are you sure?"} %>
+          </div>
+        </div>
+        <div class="card-footer text-muted">
+          <small><p>Created about <%=time_ago_in_words(articleData.created_at)%> ago,  
+                    Edited about <%=time_ago_in_words(articleData.updated_at)%> ago</p></small>
+        </div>
+        </div>
+        <div id="spacing">
+        </div>
+        </div>
+      <%end%>
+    <% end %>
+  
+
+
+  </div>
+</div>
+

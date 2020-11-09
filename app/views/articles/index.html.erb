@@ -13,10 +13,13 @@
         <h5 class="card-title"><strong><%=articleData.title%></strong></h5>
         <p class="card-text"><%=articleData.description%></p>
         <a href="/articles/<%=articleData.id%>" class="btn btn-outline-success" >View</a>
-        <a href="/articles/<%=articleData.id%>/edit" class="btn btn-outline-primary">Edit</a>
-        <div class="btn btn-outline-danger">
-          <%= link_to 'Delete', article_path(articleData), method: :delete, data: {confirm: "Are you sure?"} %>
-        </div>
+
+        <% if (logged_in? && (articleData.user_id == session[:user_id]))%>
+          <a href="/articles/<%=articleData.id%>/edit" class="btn btn-outline-primary">Edit</a>
+          <div class="btn btn-outline-danger">
+            <%= link_to 'Delete', article_path(articleData), method: :delete, data: {confirm: "Are you sure?"} %>
+          </div>
+        <% end %>
       </div>
       <div class="card-footer text-muted">
         <small><p>Created about <%=time_ago_in_words(articleData.created_at)%> ago,  
@@ -27,11 +30,5 @@
       </div>
       </div>
   <% end %>
-
-  <p></p>
-  <div>
-    <a href="/articles/new">Add New</a>
-  </div>
-
   </div>
 </div>

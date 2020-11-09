@@ -5,9 +5,14 @@
   <p><Strong>Description: </Strong><%=@article.description%></p>
 </div>
 
+
+
 <p></p>
 <div>
-  <a href="/articles/<%=@article.id%>/edit">Edit</a> |
-  <%= link_to 'Delete', article_path(@article), method: :delete, data: {confirm: "Are you sure?"} %> |
+
+  <% if (logged_in? && (@article.user_id == session[:user_id]))%>
+    <a href="/articles/<%=@article.id%>/edit">Edit</a> |
+    <%= link_to 'Delete', article_path(@article), method: :delete, data: {confirm: "Are you sure?"} %> |
+  <% end %>
   <a href="/articles">Return To Article Listing</a>
 </div>

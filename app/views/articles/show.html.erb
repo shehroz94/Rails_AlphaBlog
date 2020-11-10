@@ -10,7 +10,7 @@
 <p></p>
 <div>
 
-  <% if (logged_in? && (@article.user_id == session[:user_id]))%>
+  <% if (logged_in? && (@article.user_id == session[:user_id]) || current_user.admin?)%>
     <a href="/articles/<%=@article.id%>/edit">Edit</a> |
     <%= link_to 'Delete', article_path(@article), method: :delete, data: {confirm: "Are you sure?"} %> |
   <% end %>

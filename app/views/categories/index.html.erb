@@ -1,0 +1,29 @@
+<div id="page-content">
+  <div class="container" id="index-container">
+    <h1 class="text-center mt-4">Listing all Categories</h1>
+
+    <% @categories.each do |cat|%>
+      
+      <div>
+      <div class="card text-center shadow mb-5 bg-white rounded">
+      
+      <div class="card-body">
+        <h5 class="card-title"><strong><%=cat.name%></strong></h5>
+        <p class="card-text"></p>
+        <a href="/categories/<%=cat.id%>" class="btn btn-outline-success" >View</a>
+      </div>
+
+      <div class="card-footer text-muted">
+        <small><p>Created about <%=time_ago_in_words(cat.created_at)%> ago,  
+                  Edited about <%=time_ago_in_words(cat.updated_at)%> ago</p></small>
+      </div>
+      
+      </div>
+      <div id="spacing">
+      </div>
+      </div>
+
+    <%end%>
+
+    
+</div>

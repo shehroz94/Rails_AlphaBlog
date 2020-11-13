@@ -14,9 +14,16 @@
         <p class="card-text"><%=userData.articles.count%> Article(s)</p>
 
         <a href="<%=user_path(userData)%>" class="btn btn-outline-success" >View Profile</a>
-        <% if (logged_in? && (userData.id == session[:user_id]) || current_user.admin?) %>
-          <a href="<%=edit_user_path(userData)%>" class="btn btn-outline-primary">Edit Profile</a>
-        <% end %>
+        <%if(current_user == nil)%>
+          <% if (logged_in? && (userData.id == session[:user_id]) || false) %>
+            <a href="<%=edit_user_path(userData)%>" class="btn btn-outline-primary">Edit Profile</a>
+          <% end %>
+        <%else%>
+          <% if (logged_in? && (userData.id == session[:user_id]) || current_user.admin?) %>
+            <a href="<%=edit_user_path(userData)%>" class="btn btn-outline-primary">Edit Profile</a>
+          <% end %>
+        <%end%>
+        
       </div>
       <div class="card-footer text-muted">
         <small><p>Joined <%=time_ago_in_words(userData.created_at)%> ago</p></small>

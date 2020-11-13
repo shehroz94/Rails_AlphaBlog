@@ -12,7 +12,15 @@
           <li class="nav-item">
             <a class="nav-link" href="/articles">Articles Index</a>
           </li>
+          <li class="nav-item">
+            <%= link_to "Categories", categories_path, class: "nav-link" %>
+          </li>
           <% if logged_in? %>
+            <% if current_user.admin?%>
+              <li class="nav-item">
+                <%= link_to "Add Category", new_category_path, class: "nav-link" %>
+              </li>
+            <% end %>
             <li class="nav-item">
               <%= link_to "New Article", new_article_path, class: "nav-link" %>
             </li>
